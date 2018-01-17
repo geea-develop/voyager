@@ -16,6 +16,7 @@ class Post extends Model
         Resizable,
         HasRelationships;
 
+    protected $table = 'voyager_posts';
     protected $translatable = ['title', 'seo_title', 'excerpt', 'body', 'slug', 'meta_description', 'meta_keywords'];
 
     const PUBLISHED = 'PUBLISHED';

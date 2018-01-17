@@ -13,7 +13,7 @@ class CreateTranslationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('translations', function (Blueprint $table) {
+        Schema::create('voyager_translations', function (Blueprint $table) {
             $table->increments('id');
 
             $table->string('table_name');
@@ -23,7 +23,7 @@ class CreateTranslationsTable extends Migration
 
             $table->text('value');
 
-            $table->unique(['table_name', 'column_name', 'foreign_key', 'locale']);
+            $table->unique(['table_name', 'column_name', 'foreign_key', 'locale'], 'voyager_translations_unique');
 
             $table->timestamps();
         });
@@ -36,6 +36,6 @@ class CreateTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('translations');
+        Schema::dropIfExists('voyager_translations');
     }
 }

@@ -10,15 +10,16 @@ class Role extends Model
 {
     use HasRelationships;
 
+    protected $table = 'voyager_roles';
     protected $guarded = [];
 
     public function users()
     {
-        return $this->hasMany(Voyager::modelClass('User'));
+        return $this->belongsToMany(Voyager::modelClass('User'), 'voyager_user_roles');
     }
 
     public function permissions()
     {
-        return $this->belongsToMany(Voyager::modelClass('Permission'));
+        return $this->belongsToMany(Voyager::modelClass('Permission'), 'voyager_permission_role');
     }
 }
