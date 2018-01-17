@@ -13,6 +13,7 @@ class Page extends Model
         HasRelationships;
 
     protected $table = 'voyager_pages';
+
     protected $translatable = ['title', 'slug', 'body'];
 
     /**
