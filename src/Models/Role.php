@@ -21,6 +21,6 @@ class Role extends Model
 
     public function permissions()
     {
-        return $this->belongsToMany(Voyager::modelClass('Permission'), 'voyager_role_permission');
+        return $this->belongsToMany(Voyager::modelClass('Permission'), 'voyager_permission_role');
     }
 }
