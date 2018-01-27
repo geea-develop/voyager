@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DataTypesAddServerSide extends Migration
+class CreateVoyagerRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class DataTypesAddServerSide extends Migration
      */
     public function up()
     {
-        Schema::table('voyager_data_types', function (Blueprint $table) {
-            $table->tinyInteger('server_side')->default(0)->after('generate_permissions');
+        Schema::create('voyager_roles', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name')->unique();
+            $table->string('display_name');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class DataTypesAddServerSide extends Migration
      */
     public function down()
     {
-        Schema::table('voyager_data_types', function (Blueprint $table) {
-            $table->dropColumn('server_side');
-        });
+        Schema::drop('voyager_roles');
     }
 }

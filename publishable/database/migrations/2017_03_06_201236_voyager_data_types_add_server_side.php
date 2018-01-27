@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class AddPolicyNameToDataTypesTable extends Migration
+class VoyagerDataTypesAddServerSide extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +14,7 @@ class AddPolicyNameToDataTypesTable extends Migration
     public function up()
     {
         Schema::table('voyager_data_types', function (Blueprint $table) {
-            $table->string('policy_name')->nullable()->after('model_name');
+            $table->tinyInteger('server_side')->default(0)->after('generate_permissions');
         });
     }
 
@@ -25,7 +26,7 @@ class AddPolicyNameToDataTypesTable extends Migration
     public function down()
     {
         Schema::table('voyager_data_types', function (Blueprint $table) {
-            $table->dropColumn('policy_name');
+            $table->dropColumn('server_side');
         });
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePermissionGroupsTable extends Migration
+class MakeTableNameNullableInVoyagerPermissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreatePermissionGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('voyager_permission_groups', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->unique();
+        Schema::table('voyager_permissions', function (Blueprint $table) {
+            $table->string('table_name')->nullable()->default(null)->change();
         });
     }
 
@@ -26,6 +25,6 @@ class CreatePermissionGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('voyager_permission_groups');
+        //
     }
 }

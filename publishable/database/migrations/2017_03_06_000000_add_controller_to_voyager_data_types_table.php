@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPermissionGroupIdToPermissionsTable extends Migration
+class AddControllerToVoyagerDataTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddPermissionGroupIdToPermissionsTable extends Migration
      */
     public function up()
     {
-        Schema::table('voyager_permissions', function (Blueprint $table) {
-            $table->integer('permission_group_id')->unsigned()->nullable()->default(null);
+        Schema::table('voyager_data_types', function (Blueprint $table) {
+            $table->string('controller')->nullable()->after('model_name');
         });
     }
 
@@ -25,8 +25,8 @@ class AddPermissionGroupIdToPermissionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('voyager_permissions', function (Blueprint $table) {
-            $table->dropColumn('permission_group_id');
+        Schema::table('voyager_data_types', function (Blueprint $table) {
+            $table->dropColumn('controller');
         });
     }
 }

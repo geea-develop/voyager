@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddControllerToDataTypesTable extends Migration
+class AddOrderToVoyagerDataRowsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddControllerToDataTypesTable extends Migration
      */
     public function up()
     {
-        Schema::table('voyager_data_types', function (Blueprint $table) {
-            $table->string('controller')->nullable()->after('model_name');
+        Schema::table('voyager_data_rows', function (Blueprint $table) {
+            $table->integer('order')->default(1)->after('details');
         });
     }
 
@@ -25,8 +25,8 @@ class AddControllerToDataTypesTable extends Migration
      */
     public function down()
     {
-        Schema::table('voyager_data_types', function (Blueprint $table) {
-            $table->dropColumn('controller');
+        Schema::table('voyager_data_rows', function (Blueprint $table) {
+            $table->dropColumn('order');
         });
     }
 }

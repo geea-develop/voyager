@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateDataTypesTable extends Migration
+class CreateVoyagerDataTypesTable extends Migration
 {
     /**
      * Run the migrations.

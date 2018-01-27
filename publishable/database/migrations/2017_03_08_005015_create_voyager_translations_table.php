@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTranslationsTable extends Migration
+class CreateVoyagerTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -23,7 +23,10 @@ class CreateTranslationsTable extends Migration
 
             $table->text('value');
 
-            $table->unique(['table_name', 'column_name', 'foreign_key', 'locale'], 'voyager_translations_unique');
+            $table->unique('locale');
+            $table->unique('foreign_key');
+            $table->unique('column_name');
+            $table->unique('table_name');
 
             $table->timestamps();
         });
