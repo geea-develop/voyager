@@ -13,8 +13,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        $role = Role::where('name', 'admin')->firstOrFail();
+
         if (User::count() == 0) {
-            $role = Role::where('name', 'admin')->firstOrFail();
 
             User::create([
                 'name'           => 'Admin',
@@ -23,6 +24,15 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => str_random(60),
                 'role_id'        => $role->id,
             ]);
+        } else {
+
+            User::where('admin', true)->forceFill(['role_id' => $role->id]);
+
+            $role = Role::firstOrNew(['name' => 'user']);
+
+            User::where('admin', false)->forceFill(['role_id' => $role->id]);
+
         }
+
     }
 }
