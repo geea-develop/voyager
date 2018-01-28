@@ -50,6 +50,8 @@ trait VoyagerUser
             $this->load('role');
         }
 
+        if (!$this->role) return false;
+
         if (!$this->role->relationLoaded('permissions')) {
             $this->role->load('permissions');
         }
