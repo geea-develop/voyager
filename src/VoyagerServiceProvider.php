@@ -270,7 +270,7 @@ class VoyagerServiceProvider extends ServiceProvider
         // otherwise it will throw an error because no database
         // connection has been made yet.
         try {
-            if (Schema::hasTable('data_types')) {
+            if (Schema::hasTable('voyager_data_types')) {
                 $dataType = VoyagerFacade::model('DataType');
                 $dataTypes = $dataType->get();
 
