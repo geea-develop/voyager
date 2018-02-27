@@ -126,6 +126,24 @@ Route::group(['as' => 'voyager.'], function () {
         Route::group(['prefix' => 'old-admin'], function () use ($namespacePrefix) {
             // old admin routes
             Route::get('/fast-report', 'Admin\UsersController@fast_report');
+
+            Route::group(['prefix' => 'users'], function(){
+                Route::get('/resend_verification', 'Admin\UsersController@resend_verification');
+                Route::get('/home', 'Admin\UsersController@home')->name('admin.users');
+                Route::post('/make_premium/{user_id}', 'Admin\UsersController@make_premium');
+                Route::post('/suspend_premium/{user_id}', 'Admin\UsersController@suspend_premium');
+                Route::post('/toggle_affiliate/{user_id}', 'Admin\UsersController@toggle_affiliate');
+                Route::get('/cancel_user_subscription/{user_id}', 'Admin\BillingController@cancel_user_subscription');
+                Route::get('/show_user_agreement/{user_id}', 'Admin\BillingController@show_user_agreement');
+                Route::get('/refund_transaction/{transaction_id}', 'Admin\BillingController@refund_transaction');
+                Route::get('/show_user_transactions/{user_id}', 'Admin\BillingController@show_user_transactions');
+                Route::get('/update_subscription_by_paypal/{user_id}', 'Admin\BillingController@update_subscription_by_paypal');
+                Route::get('/fast-report', 'Admin\UsersController@fast_report');
+            });
+
+            Route::resource('/users', 'Admin\UsersController', ['only' => 'show']);
+
+            Route::get('billing/agreement/{agreement_id}', 'Admin\BillingController@show_agreement');
         });
     });
 });
