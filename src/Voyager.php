@@ -2,6 +2,8 @@
 
 namespace TCG\Voyager;
 
+use App\Product;
+use App\Subscription;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Filesystem\Filesystem;
@@ -43,17 +45,19 @@ class Voyager
     protected $viewLoadingEvents = [];
 
     protected $models = [
-        'Category'   => Category::class,
-        'DataRow'    => DataRow::class,
-        'DataType'   => DataType::class,
-        'Menu'       => Menu::class,
-        'MenuItem'   => MenuItem::class,
-        'Page'       => Page::class,
-        'Permission' => Permission::class,
-        'Post'       => Post::class,
-        'Role'       => Role::class,
-        'Setting'    => Setting::class,
-        'User'       => User::class,
+        'Category'      => Category::class,
+        'DataRow'       => DataRow::class,
+        'DataType'      => DataType::class,
+        'Menu'          => Menu::class,
+        'MenuItem'      => MenuItem::class,
+        'Page'          => Page::class,
+        'Permission'    => Permission::class,
+        'Post'          => Post::class,
+        'Role'          => Role::class,
+        'Setting'       => Setting::class,
+        'User'          => User::class,
+        'Product'       => Product::class,
+        'Subscription'  => Subscription::class
     ];
 
     public $setting_cache = null;

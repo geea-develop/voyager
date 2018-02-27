@@ -122,5 +122,10 @@ Route::group(['as' => 'voyager.'], function () {
         });
 
         Route::resource('database', $namespacePrefix.'VoyagerDatabaseController');
+
+        Route::group(['prefix' => 'old-admin'], function () use ($namespacePrefix) {
+            // old admin routes
+            Route::get('/fast-report', 'Admin\UsersController@fast_report');
+        });
     });
 });

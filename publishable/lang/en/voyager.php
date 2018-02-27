@@ -354,6 +354,12 @@ return [
         'user'           => 'User|Users',
         'user_link_text' => 'View all users',
         'user_text'      => 'You have :count :string in your database. Click on button below to view all users.',
+        'product'           => 'Product|Products',
+        'product_link_text' => 'View all products',
+        'product_text'      => 'You have :count :string in your database. Click on button below to view all products.',
+        'subscription'           => 'Subscription|Subscriptions',
+        'subscription_link_text' => 'View all subscriptions',
+        'subscription_text'      => 'You have :count :string in your database. Click on button below to view all subscriptions.',
     ],
 
     'form' => [
