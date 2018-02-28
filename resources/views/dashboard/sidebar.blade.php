@@ -30,6 +30,6 @@
 
         </div>
 
-        {!! menu('admin', 'admin_menu') !!}
+        {!! menu(Auth::user()->role->name, 'admin_menu') !!}
     </nav>
 </div>
