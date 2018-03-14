@@ -3,8 +3,10 @@
 @section('content')
     <div class="page-content">
         @include('voyager::alerts')
-        @include('voyager::dimmers')
-        <div class="analytics-container">
+
+        @if(Auth::user()->role->name === "admin")
+            @include('voyager::dimmers')
+            <div class="analytics-container">
             <?php $google_analytics_client_id = Voyager::setting("admin.google_analytics_client_id"); ?>
             @if (isset($google_analytics_client_id) && !empty($google_analytics_client_id))
                 {{-- Google Analytics Embed --}}
@@ -76,9 +78,12 @@
                 </ul>
             </div>
         </div>
+        @endif
+
     </div>
 @stop
 
+@if(Auth::user()->role->name === "admin")
 @section('javascript')
 
     @if(isset($google_analytics_client_id) && !empty($google_analytics_client_id))
@@ -471,4 +476,6 @@
 
     @endif
 
+
 @stop
+@endif
